@@ -1,4 +1,4 @@
-{% set version = "4.27.3" %}
+{% set version = "4.27.4" %}
 
 package:
   name: gen3
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/g/gen3/gen3-{{ version }}.tar.gz
-  sha256: 252b4e63285ef41b08d0bc9046616c35586c48d0a59291caf28f384090738a9a
+  sha256: faedfdf5789c25b59304d48e8b92dfcd100dd2c86fd82ad744f513cbe3d77215
 
 build:
   entry_points:
