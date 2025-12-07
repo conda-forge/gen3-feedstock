@@ -58,6 +58,7 @@ tests:
         - pip
         - python =${{ python_min }}
     script:
+      - pip check
 
 about:
   summary: Gen3 CLI and Python SDK
