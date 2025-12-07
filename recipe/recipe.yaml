@@ -1,28 +1,32 @@
-{% set version = "4.27.5" %}
+schema_version: 1
+
+context:
+  version: 4.27.5
 
 package:
   name: gen3
-  version: {{ version }}
+  version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/g/gen3/gen3-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/g/gen3/gen3-${{ version }}.tar.gz
   sha256: f7f20888448b48731f99ac2b7b778c88e7f389a1b4de5b4f8ca3278c25ff56b0
 
 build:
-  entry_points:
-    - gen3 = gen3.cli.__main__:main
+  number: 1
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  python:
+    entry_points:
+      - gen3 = gen3.cli.__main__:main
 
 requirements:
   host:
-    - python ={{ python_min }}
+    - python =${{ python_min }}
     - poetry >=1.4.1
     - poetry-core
     - pip
   run:
-    - python >={{ python_min }}
+    - python >=${{ python_min }}
     - requests
     - indexclient >=2.3.0,<3.0.0
     - drsclient >=0.3.0
@@ -33,7 +37,7 @@ requirements:
     - fhirclient
     - jsonschema
     - dataclasses-json <=0.5.9
-    # - pypfb >=0.5.30
+    - pypfb >=0.5.30
     - tqdm >=4.61.2,<5.0.0
     - humanfriendly
     - python-dateutil
@@ -45,23 +49,23 @@ requirements:
     - pyyaml >=6.0.1
     - gen3users
 
-test:
-  imports:
-    - gen3
-  commands:
-    # - pip check
-    # - gen3 --help
-  requires:
-    - pip
-    - python ={{ python_min }}
+tests:
+  - python:
+      imports:
+        - gen3
+  - requirements:
+      run:
+        - pip
+        - python =${{ python_min }}
+    script:
 
 about:
-  home: https://gen3.org/
   summary: Gen3 CLI and Python SDK
   license: Apache-2.0
   license_file:
     - LICENSE
     - NOTICE
+  homepage: https://gen3.org/
 
 extra:
   recipe-maintainers:
