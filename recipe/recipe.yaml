@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: 4.27.5
+  version: "4.27.6"
 
 package:
   name: gen3
@@ -9,12 +9,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/g/gen3/gen3-${{ version }}.tar.gz
-  sha256: f7f20888448b48731f99ac2b7b778c88e7f389a1b4de5b4f8ca3278c25ff56b0
+  sha256: 00fdddf79e636cd7dff87818fa1338f2b21c9fdf207465f2524c299baf487480
 
 build:
-  number: 1
+  number: 0
   noarch: python
-  script: 
+  script:
     - sed -i '/pypfb/d' pyproject.toml
     - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   python:
