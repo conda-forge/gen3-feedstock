@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "4.27.6"
+  version: "4.27.7"
 
 package:
   name: gen3
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/g/gen3/gen3-${{ version }}.tar.gz
-  sha256: 00fdddf79e636cd7dff87818fa1338f2b21c9fdf207465f2524c299baf487480
+  sha256: f4ed8226ae999ded0baade84a749a522ef4123c390b135491255460ab04c36a0
 
 build:
   number: 0
